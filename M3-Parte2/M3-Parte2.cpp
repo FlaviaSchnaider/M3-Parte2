@@ -49,7 +49,7 @@ int opcao_invalida(string frase, int min, int max, bool mostrar_min_max) {
 
         if (op < min || op > max) {
             set_color(4);
-            cout << "\n\tOpcao invalida. Tente novamente.\n" << endl;
+            cout << "\nOpcao invalida. Tente novamente.\n" << endl;
             set_color(7);
         }
         if (cin.fail()) {
@@ -501,18 +501,21 @@ void atualizar_matriz(Matriz matriz[][tam_matriz], int linha, int coluna, int di
 
 #pragma endregion verificar jogada
 
-void exibirMenu() {
+int exibirMenu() {
     set_color(11);
-    cout << " -----------------------------------------\n"  
-         << "                   MENU                 " << endl
-         << " -----------------------------------------\n" << endl;
+    cout << "\n-----------------------------------------------------------\n";
+    cout << "                          MENU                                 ";
+    cout << "\n-----------------------------------------------------------\n" << endl;
     set_color(7);
-    cout << " [1] - Visualizar Lista Completa\n"
-        << " [2] - Escrever nova lista\n"
-        << " [3] - Deletar uma lista\n"
-        << " [4] - Alterar uma Lista\n"
-        << " [5] - Jogar\n"
-        << " [0] - Salvar e Sair\n";
+    cout << "          [1] - Visualizar Lista Completa               \n"
+         << "          [2] - Escrever nova lista                     \n"
+         << "          [3] - Deletar uma lista                       \n"
+         << "          [4] - Alterar uma Lista                       \n"
+         << "          [5] - Jogar                                   \n"
+         << "          [0] - Salvar e Sair                           \n"
+         << "                                                        \n";
+    int escolha = opcao_invalida("\t  Digite uma opcao do menu ", 0, 5, true);
+    return escolha;
 }
 
 int main()
@@ -532,9 +535,8 @@ int main()
 
     while (true) {
         system("cls");
-        exibirMenu();
-        escolha = opcao_invalida("\nDigite sua escolha", 0, 5, true);
-
+        escolha = exibirMenu();
+        
         switch (escolha)
         {
         case 0: // SALVAR ARQUIVO E SAIR
