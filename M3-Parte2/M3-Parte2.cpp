@@ -48,7 +48,9 @@ int opcao_invalida(string frase, int min, int max, bool mostrar_min_max) {
         }
 
         if (op < min || op > max) {
-            cout << "\nOpcao invalida. Tente novamente.\n" << endl;
+            set_color(4);
+            cout << "\n\tOpcao invalida. Tente novamente.\n" << endl;
+            set_color(7);
         }
         if (cin.fail()) {
             cin.clear();
